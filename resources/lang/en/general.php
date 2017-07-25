@@ -1,4 +1,6 @@
 <?php 
 	return [
-		'title'	=>	'HIỆP HỘI VĂN HÓA BIỂN',
+		'title'			=>	'HIỆP HỘI VĂN HÓA BIỂN',
+		'xinchao'		=>	'Xin chào',
+		
 	];

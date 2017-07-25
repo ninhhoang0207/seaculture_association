@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
 	<div class="left_col scroll-view">
 		<div class="navbar nav_title" style="border: 0;">
-			<a href="" class="site_title"><i class="fa fa-paw"></i> <span>ADMIN!</span></a>
+			<a href="" class="site_title"><i class="fa fa-paw"></i> <span>HỆ THỐNG</span></a>
 		</div>
 
 		<div class="clearfix"></div>
@@ -12,8 +12,8 @@
 				<img src="{{asset('images/user.png')}}" alt="..." class="img img-circle profile_img">
 			</div>
 			<div class="profile_info">
-				<span>Welcome,</span>
-				<h2>Admin</h2>
+				<span>@lang('general.xinchao'),</span>
+				<h2>{{ Auth::user()->name }}</h2>
 			</div>
 		</div>
 		<!-- /menu profile quick info -->
@@ -23,13 +23,12 @@
 		<!-- sidebar menu -->
 		<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 			<div class="menu_section">
-				<h3>General</h3>
+				<h3></h3>
 				<ul class="nav side-menu">
-					<li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+					<li><a><i class="fa fa-newspaper-o"></i>@lang('sidebar/general.tintuc') <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
-							<li><a href="index.html">Dashboard</a></li>
-							<li><a href="index2.html">Dashboard2</a></li>
-							<li><a href="index3.html">Dashboard3</a></li>
+							<li><a href="{{ route('news.list') }}">@lang('sidebar/general.danhsach')</a></li>
+							<li><a href="{{ route('news.add') }}">@lang('sidebar/general.them')</a></li>
 						</ul>
 					</li>
 				</ul>
