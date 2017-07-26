@@ -1,6 +1,8 @@
 @extends('templates.master')
 
-@section('title')
+@section('header')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/select2.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/switchery.css') }}">
 @endsection
 
 @section('content')
@@ -8,7 +10,7 @@
 	<div class="">
 		<div class="page-title">
 			<div class="title_left">
-				<h3>Tin tức</h3>
+				<h3>@lang('news/backend.news')</h3>
 			</div>
 		</div>
 		<div class="clearfix"></div>
@@ -18,7 +20,7 @@
 				<div class="x_panel">
 					<!-- X-title -->
 					<div class="x_title">
-						<h2>Thêm mới</h2>
+						<h2>@lang('news/backend.add')</h2>
 						<div class="clearfix"></div>
 					</div>
 					<!-- X-title -->
@@ -26,36 +28,40 @@
 					<!-- X-content -->
 					<div class="x_content">
 						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
+							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">@lang('news/backend.title') <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+								<input type="text" name="title" id="title" required="required" class="form-control col-md-7 col-xs-12">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
-							</label>
+							<label for="categories" class="control-label col-md-3 col-sm-3 col-xs-12">@lang('news/backend.categories') <span class="required">*</span></label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+								<select id="categories" class="form-control col-md-7 col-xs-12" name="categories" multiple="multiple">
+										<option>Tin tức Hot</option>
+										<option>Tin tức Hot</option>
+										<option>Tin tức Hot</option>
+										<option>Tin nổi bật</option>
+										<option>Tin nổi bật</option>
+										<option>Tin nổi bật</option>
+								</select>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<div id="gender" class="btn-group" data-toggle="buttons">
-									<label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-										<input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
-									</label>
-									<label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-										<input type="radio" name="gender" value="female"> Female
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">@lang('news/backend.hot')</label>
+							<div class="col-md-9 col-sm-9 col-xs-12">
+								<div class="">
+									<label>
+										<input type="checkbox" class="js-switch" value="checked" checked /> 
 									</label>
 								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="content">@lang('news/backend.content') <span class="required">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input type="text" id="content" name="content" required="required" class="form-control col-md-7 col-xs-12">
 							</div>
 						</div>
 					</div>
@@ -66,4 +72,14 @@
 	</div>
 </form>
 @endsection
+@push('scripts')
+<script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script type="text/javascript" src="{{ asset('ckfinder/ckfinder.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/select2.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/switchery.js') }}"></script>
+<script type="text/javascript" >
+	CKEDITOR.replace( 'content');
+	$('#categories').select2();
+</script>
+@endpush
 
