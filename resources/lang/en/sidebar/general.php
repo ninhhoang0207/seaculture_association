@@ -1,10 +1,11 @@
 <?php 
 	return array(
-		'tintuc'			=>	'Tin tức',
+		'news'			=>	'Tin tức',
 
-		'danhsach'		=>	'Danh sách',
-		'them'			=>	'Thêm mới',
-		'sua'				=>	'Chỉnh sửa',
-		'xoa'				=>	'Xóa',
+		'list'			=>	'Danh sách',
+		'add'				=>	'Thêm mới',
+		'edit'			=>	'Chỉnh sửa',
+		'delete'			=>	'Xóa',
+		'category'		=>	'Danh mục tin tức',
 		);
  ?>

@@ -5,7 +5,11 @@
 		'news'				=>	'Tin tức',
 		'title'				=>	'Tiêu đề',
 		'content'			=>	'Nội dung',
-		'categories'		=>	'Danh mục',
+		'categories'		=>	'Thể loại',
 		'hot'					=>	'Nổi bật',
+		'view_mode'			=>	'Chế độ xem',
+		'title_image'		=>	'Ảnh đại diện',
+		'cancel'				=>	'Hủy',
+		'video'				=>	'Video',
 		);
  ?>

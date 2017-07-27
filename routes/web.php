@@ -19,8 +19,13 @@ Route::group(['prefix' => 'admin', 'middleware' =>	'auth'], function() {
 	Route::get('','AdminController\SystemController@index')->name('system');
 	// =========================================News=======================================
 	Route::group(['prefix' => 'news'], function() {
-		Route::get('list','AdminController\NewsController@list')->name('news.list');
+		Route::get('list','AdminController\NewsController@list_news')->name('news.list');
 		Route::get('add','AdminController\NewsController@add')->name('news.add');
+	});
+	// =========================================Category=======================================
+	Route::group(['prefix' => 'category'], function() {
+		Route::get('list','AdminController\CategoryController@list_categories')->name('category.list');
+		Route::get('add','AdminController\CategoryController@add')->name('category.add');
 	});
 });
 Auth::routes();

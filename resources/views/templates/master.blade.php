@@ -15,6 +15,12 @@
 	<link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
 	<!-- Bootstrap library-->
 	<link href="{{asset('css/nprogress.css')}}" rel="stylesheet">
+	<!-- Select 2 -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/select2.css') }}">
+	<!-- Swtich button -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/switchery.css') }}">
+	<!-- Check button -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('iCheck/skins/flat/green.css') }}">
 	<!-- Custom Theme Style -->
 	<link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
 </head>
@@ -38,6 +44,12 @@
 <script src="{{asset('js/moment.min.js')}}"></script>
 <!-- NProgress -->
 <script src="{{asset('js/nprogress.js')}}"></script>
+<!-- Select 2 -->
+<script type="text/javascript" src="{{ asset('js/select2.js') }}"></script>
+<!-- Switch button -->
+<script type="text/javascript" src="{{ asset('js/switchery.js') }}"></script>
+<!-- Checkbox -->
+<script type="text/javascript" src="{{ asset('iCheck/icheck.js') }}"></script>
 <!-- Custom Theme Scripts -->
 <script src="{{asset('build/js/custom.min.js')}}"></script>
 @stack('scripts')

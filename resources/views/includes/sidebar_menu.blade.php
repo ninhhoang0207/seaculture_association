@@ -12,7 +12,7 @@
 				<img src="{{asset('images/user.png')}}" alt="..." class="img img-circle profile_img">
 			</div>
 			<div class="profile_info">
-				<span>@lang('general.xinchao'),</span>
+				<span>@lang('general.hello'),</span>
 				<h2>{{ Auth::user()->name }}</h2>
 			</div>
 		</div>
@@ -25,10 +25,16 @@
 			<div class="menu_section">
 				<h3></h3>
 				<ul class="nav side-menu">
-					<li><a><i class="fa fa-newspaper-o"></i>@lang('sidebar/general.tintuc') <span class="fa fa-chevron-down"></span></a>
+					<li><a><i class="fa fa-newspaper-o"></i>@lang('sidebar/general.news') <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
-							<li><a href="{{ route('news.list') }}">@lang('sidebar/general.danhsach')</a></li>
-							<li><a href="{{ route('news.add') }}">@lang('sidebar/general.them')</a></li>
+							<li><a href="{{ route('news.list') }}">@lang('sidebar/general.list')</a></li>
+							<li><a href="{{ route('news.add') }}">@lang('sidebar/general.add')</a></li>
+						</ul>
+					</li>
+					<li><a><i class="fa fa-list-ul"></i>@lang('sidebar/general.category') <span class="fa fa-chevron-down"></span></a>
+						<ul class="nav child_menu">
+							<li><a href="{{ route('category.list') }}">@lang('sidebar/general.list')</a></li>
+							<li><a href="{{ route('category.add') }}">@lang('sidebar/general.add')</a></li>
 						</ul>
 					</li>
 				</ul>
