@@ -27,6 +27,11 @@ Route::group(['prefix' => 'admin', 'middleware' =>	'auth'], function() {
 		Route::get('list','AdminController\CategoryController@list_categories')->name('category.list');
 		Route::get('add','AdminController\CategoryController@add')->name('category.add');
 	});
+	Route::group(['prefix' => 'video'], function() {
+		Route::get('list','AdminController\VideoController@admin_index')->name('admin.video.index');
+		Route::get('create','AdminController\VideoController@create')->name('admin.video.create');
+		Route::post('create','AdminController\VideoController@store')->name('admin.video.store');
+	});
 });
 Auth::routes();
 

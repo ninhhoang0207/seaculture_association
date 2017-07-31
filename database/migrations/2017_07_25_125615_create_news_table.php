@@ -26,6 +26,7 @@ class CreateNewsTable extends Migration
             $table->string('view_mode');
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
