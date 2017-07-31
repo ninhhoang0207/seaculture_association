@@ -62,7 +62,7 @@ class NewsController extends Controller
 			$save = array(
 				'title'			=>	$data['title'],
 				'title_slug'	=>	$title_slug,
-				'is_hot'			=>	$data['is_hot'],
+				'is_hot'		=>	isset($data['is_hot'])?1:0,
 				'view_mode'		=>	$data['view_mode'],
 				'content'		=>	$data['content'],
 				'title_image'	=>	$new_file_name,

@@ -18,10 +18,10 @@ class CreateNewsTable extends Migration
             $table->string('title');
             $table->string('title_slug');
             $table->string('title_image');
-            $table->string('video');
+            $table->string('video')->nullable();
             $table->text('content');
             $table->integer('views');
-            $table->smallInteger('is_hot');
+            $table->smallInteger('is_hot')->default(0);
             $table->smallInteger('is_valid');
             $table->string('view_mode');
             $table->integer('created_by');

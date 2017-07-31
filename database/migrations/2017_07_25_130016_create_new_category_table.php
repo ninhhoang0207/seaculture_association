@@ -13,7 +13,7 @@ class CreateNewCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('new_category', function (Blueprint $table) {
+        Schema::create('news_category', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('news_id');
             $table->integer('category_id');

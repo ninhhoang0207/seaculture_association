@@ -25,6 +25,7 @@ class CreateVideosTable extends Migration
             $table->string('type');//thanh vien hoac tat cac moi nguoi co the xem video
             $table->integer('created_by');
             $table->integer('updated_by');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
