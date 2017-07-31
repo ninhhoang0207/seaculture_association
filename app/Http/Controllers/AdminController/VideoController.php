@@ -75,10 +75,51 @@ class VideoController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $title_slug      = str_slug( $data['title'] );
+        $mytime    = strtotime( Carbon::now()->toDateTimeString() );
+
+        $file = $data['title_image'];
+        $extension = $file->getClientOriginalExtension();
+        $path = public_path().'/images/videos/';
+        $avatar_file_name = time().".".$extension;
+        $file->move($path,$avatar_file_name);
         $video= Input::file('url');
         $filename = $video->getClientOriginalName();
-        $path = public_path().'/videos/';
-        return $file->move($path, $filename);
+
+        $video_name = time().".".$filename; 
+        $path_video = public_path().'/videos/';
+        $video->move($path_video, $video_name);
+        dd($video);
+        DB::beginTransaction();
+        try {
+            $save = array(
+                'title'         =>  $data['title'],
+                'title_slug'    =>  $title_slug.$mytime,
+                'title_image'   =>  $avatar_file_name,
+                'desciption'    =>  $data['desciption'],
+                'url'           =>  $video_name,
+                'is_hot'        =>  isset($data['is_hot'])?1:0,
+                'is_valid'      =>  Auth::user()->role=='admin'?1:0,
+                'type'          =>  isset($data['type'])?1:0,
+                'created_by'    =>  Auth::user()->id,
+                );
+            dd($save);
+            $news = DB::table('news')->insert($save);
+            $id = DB::getPdo()->lastInsertId();
+            foreach ($data['categories'] as $key => $value) {
+                DB::table('news_category')->insert(['category_id'=>$value,'news_id'=>$id]);
+            }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            if (file_exists($path."/".$new_file_name)) {
+                unlink($path."/".$new_file_name);
+            }
+            throw $e;
+    // something went wrong
+        }
+        Session::flash('success','Success');
+        return Redirect::back();
     }
 
     /**

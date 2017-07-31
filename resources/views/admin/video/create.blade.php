@@ -80,6 +80,16 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">Type</label>
+							<div class="col-md-9 col-sm-9 col-xs-12">
+								<div class="">
+									<label>
+										<input type="checkbox" class="js-switch" name="type" value="1" checked /> 
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
 							<div class="col-md-3 col-sm-3 col-xs-12"></div>
 							<div class="col-md-6 col-sm-6 col-xs-12 text-center">
 								<button class="btn btn-default">@lang('news/backend.cancel')</button>
