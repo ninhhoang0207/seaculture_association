@@ -11,5 +11,18 @@
 		'title_image'		=>	'Ảnh đại diện',
 		'cancel'				=>	'Hủy',
 		'video'				=>	'Video',
+		'select_category'	=>	'-- Chọn danh mục --',
+		'all'					=>	'Tất cả',
+		'only_member'		=>	'Chỉ dành cho thành viên',
+		'list'				=>	'Danh sách',
+		'warning_delete'	=>	'Bạn có chắc chắn muốn xóa.',
+		'delete'				=>	'Xóa',
+		'id'					=>	'STT',
+		'avatar'				=>	'Ảnh đại diện',
+		'created_at'		=>	'Ngày đăng',
+		'function'			=>	'Chức năng',
+		'article'			=>	'Bài viết',
+		'errors'				=>	'Lỗi thao tác',
+		'success'			=>	'Thao tác thành công',
 		);
  ?>

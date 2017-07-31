@@ -7,7 +7,8 @@
 @endsection
 
 @section('content')
-<form class="form-horizontal form-label-left" enctype="multipart/form-data">
+<form class="form-horizontal form-label-left" method="POST" enctype="multipart/form-data">
+	{{ csrf_field() }}
 	<div class="">
 		<div class="page-title">
 			<div class="title_left">
@@ -38,13 +39,10 @@
 						<div class="form-group">
 							<label for="categories" class="control-label col-md-3 col-sm-3 col-xs-12">@lang('news/backend.categories') <span class="required">*</span></label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<select id="categories" class="form-control col-md-7 col-xs-12" name="categories" multiple="multiple">
-										<option>Tin tức Hot</option>
-										<option>Tin tức Hot</option>
-										<option>Tin tức Hot</option>
-										<option>Tin nổi bật</option>
-										<option>Tin nổi bật</option>
-										<option>Tin nổi bật</option>
+								<select id="categories" class="form-control col-md-7 col-xs-12" name="categories[]" multiple="multiple" required>
+										<?php foreach ($category_list as $key => $value): ?>
+											<option value="{{ $value->id }}">{{ $value->title }}</option>
+										<?php endforeach ?>
 								</select>
 							</div>
 						</div>
@@ -63,9 +61,8 @@
 							<div class="col-md-9 col-sm-9 col-xs-12">
 								<div class="">
 									<label>
-										<input type="radio" name="view_mode" id="view_mode_all" class="flat" value="checked" checked value="all" /> Tất cả &nbsp
-										<input type="radio" name="view_mode" id="view_mode_member" class="flat" value="checked" value="member" />&nbsp Chỉ dành cho thành viên
-
+										<input type="radio" name="view_mode" id="view_mode_all" class="flat" checked value="all" /> @lang('news/backend.all') &nbsp
+										<input type="radio" name="view_mode" id="view_mode_member" class="flat" value="member" />&nbsp @lang('news/backend.only_member')
 									</label>
 								</div>
 							</div>
@@ -73,7 +70,7 @@
 						<div class="form-group">
 							<label for="categories" class="control-label col-md-3 col-sm-3 col-xs-12">@lang('news/backend.title_image') <span class="required">*</span></label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="file" class="form-control" name="title_image" id="title_image">
+								<input type="file" class="form-control" name="title_image" id="title_image" required>
 								<div class="form-group">
 									<img src="" class="img img-thumbnail" id="preview_title_image" width="500px" height="auto" style="display: none;">
 								</div>
@@ -89,7 +86,7 @@
 							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="content">@lang('news/backend.content') <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="content" name="content" required="required" class="form-control col-md-7 col-xs-12">
+								<textarea id="content" name="content" required class="form-control col-md-7 col-xs-12"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
@@ -117,7 +114,9 @@
 <script type="text/javascript" src="{{ asset('iCheck/icheck.js') }}"></script>
 <script type="text/javascript" >
 	CKEDITOR.replace( 'content');
-	$('#categories').select2();
+	$('#categories').select2({
+		placeholder : "{{ Lang::get('news/backend.select_category') }}",
+	});
 </script>
 <script type="text/javascript">
 	function readURL(input) {
