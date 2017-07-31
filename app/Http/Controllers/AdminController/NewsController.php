@@ -23,7 +23,8 @@ class NewsController extends Controller
 
 	public function get_news_data() {
 		$data = NewsModel::select(['id','title','title_image','created_at']);
-		return Datatables::of($data)
+		// $data = NewsModel::all();
+ 		return Datatables::of($data)
 			->editColumn('created_at', function ($user) {
 				return $user->created_at->format('d/m/Y');
 			})
@@ -68,7 +69,7 @@ class NewsController extends Controller
 				'title_image'	=>	$new_file_name,
 				'views'			=>	0,
 				'content'		=>	$data['content'],
-				'is_valid'		=>	Auth::user()->role?1:0,
+				'is_valid'		=>	Auth::user()->role=='admin'?1:0,
 				'created_by'	=>	Auth::user()->id,
 				'created_at'	=>	Carbon::now(),
 				'updated_at'	=>	Carbon::now(),

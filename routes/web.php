@@ -35,8 +35,12 @@ Route::group(['prefix' => 'admin', 'middleware' =>	'auth'], function() {
 	});
 	Route::group(['prefix' => 'video'], function() {
 		Route::get('list','AdminController\VideoController@admin_index')->name('admin.video.index');
+		Route::get('video-data','AdminController\VideoController@get_video_data')->name('admin.video.data');
 		Route::get('create','AdminController\VideoController@create')->name('admin.video.create');
 		Route::post('create','AdminController\VideoController@store')->name('admin.video.store');
+		Route::get('detail','AdminController\VideoController@get_detail')->name('admin.video.detail');
+		Route::post('edit/{id?}','AdminController\VideoController@edit')->name('admin.video.edit');
+		Route::get('delete/{id?}','AdminController\VideoController@delete')->name('admin.video.delete');
 	});
 });
 Auth::routes();
